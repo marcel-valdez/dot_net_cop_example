@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx" Version="2.0">
+    <!-- EF Runtime content -->
+    <edmx:Runtime>
+        <!-- SSDL content -->
+        <edmx:StorageModels>
+        <Schema Namespace="Game.Logic.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="GameLogicModelStoreContainer">
+    <EntitySet Name="Accounts" EntityType="Game.Logic.Model.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cards" EntityType="Game.Logic.Model.Store.Cards" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoredBattles" EntityType="Game.Logic.Model.Store.StoredBattles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rooms" EntityType="Game.Logic.Model.Store.Rooms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRanks" EntityType="Game.Logic.Model.Store.UserRanks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AccountCards" EntityType="Game.Logic.Model.Store.AccountCards" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AccountCards_Account" Association="Game.Logic.Model.Store.FK_AccountCards_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="AccountCards" EntitySet="AccountCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountCards_Card" Association="Game.Logic.Model.Store.FK_AccountCards_Card">
+      <End Role="Card" EntitySet="Cards" />
+      <End Role="AccountCards" EntitySet="AccountCards" />
+    </AssociationSet>
+    <AssociationSet Name="BattleAccount" Association="Game.Logic.Model.Store.BattleAccount">
+      <End Role="Battle" EntitySet="StoredBattles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="BattleAccount1" Association="Game.Logic.Model.Store.BattleAccount1">
+      <End Role="Battle" EntitySet="StoredBattles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="ELO" Type="int" Nullable="false" DefaultValue="1200" />
+  </EntityType>
+  <EntityType Name="Cards">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AttackPoints" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="DefensePoints" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_Name" Type="nvarchar(max)" Nullable="false" DefaultValue="DefaultName" />
+    <Property Name="Effect_Description" Type="nvarchar(max)" Nullable="false" DefaultValue="Default Effect" />
+    <Property Name="Effect_CardAttackMultiplier" Type="float" Nullable="false" DefaultValue="1" />
+    <Property Name="Effect_CardAttackChange" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_CardDefenseMultiplier" Type="float" Nullable="false" DefaultValue="1" />
+    <Property Name="Effect_CardDefenseChange" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_LifePointsChange" Type="float" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_DisableOpponentEffect" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Effect_Affected" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_EffectTiming" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Effect_ProbabilityOfEffect" Type="float" Nullable="false" DefaultValue="0" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="StoredBattles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="PlayerA_Id" Type="int" Nullable="false" />
+    <Property Name="Account_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRanks">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Rank" Type="bigint" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="AccountCards">
+    <Key>
+      <PropertyRef Name="AccountCards_Card_Id" />
+      <PropertyRef Name="Deck_Id" />
+    </Key>
+    <Property Name="AccountCards_Card_Id" Type="int" Nullable="false" />
+    <Property Name="Deck_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="BattleAccount">
+    <End Role="Battle" Type="Game.Logic.Model.Store.StoredBattles" Multiplicity="*" />
+    <End Role="Account" Type="Game.Logic.Model.Store.Accounts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Battle">
+        <PropertyRef Name="PlayerA_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BattleAccount1">
+    <End Role="Battle" Type="Game.Logic.Model.Store.StoredBattles" Multiplicity="*" />
+    <End Role="Account" Type="Game.Logic.Model.Store.Accounts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Battle">
+        <PropertyRef Name="Account_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountCards_Account">
+    <End Role="Account" Type="Game.Logic.Model.Store.Accounts" Multiplicity="1" />
+    <End Role="AccountCards" Type="Game.Logic.Model.Store.AccountCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountCards">
+        <PropertyRef Name="AccountCards_Card_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountCards_Card">
+    <End Role="AccountCards" Type="Game.Logic.Model.Store.AccountCards" Multiplicity="*" />
+    <End Role="Card" Type="Game.Logic.Model.Store.Cards" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccountCards">
+        <PropertyRef Name="Deck_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+        <!-- CSDL content -->
+        <edmx:ConceptualModels>
+            <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Alias="Self" Namespace="Game.Logic.Model">
+                <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true" cg:TypeAccess="Internal">
+                    <EntitySet Name="Accounts" EntityType="Game.Logic.Model.Account" cg:GetterAccess="Internal" />
+                    <EntitySet Name="Cards" EntityType="Game.Logic.Model.Card" cg:GetterAccess="Internal" />
+                    <AssociationSet Name="AccountCards" Association="Game.Logic.Model.AccountCards">
+                        <End EntitySet="Accounts" Role="Account" />
+                        <End EntitySet="Cards" Role="Card" />
+                    </AssociationSet>
+                    <EntitySet Name="StoredBattles" EntityType="Game.Logic.Model.Battle" cg:GetterAccess="Internal" />
+                    <EntitySet Name="Rooms" EntityType="Game.Logic.Model.Room" cg:GetterAccess="Internal" />
+                    <EntitySet Name="UserRanks" EntityType="Game.Logic.Model.UserRank" cg:GetterAccess="Internal" />
+          <AssociationSet Name="BattleAccount" Association="Game.Logic.Model.BattleAccount">
+            <End Role="Battle" EntitySet="StoredBattles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="BattleAccount1" Association="Game.Logic.Model.BattleAccount1">
+            <End Role="Battle" EntitySet="StoredBattles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+                </EntityContainer>
+                <EntityType Name="Account" cg:TypeAccess="Internal">
+                    <Key>
+                        <PropertyRef Name="Id" />
+                    </Key>
+                    <Property Name="Id" ConcurrencyMode="None" Nullable="false" Type="Int32" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+                    <Property Name="Username" MaxLength="16" Nullable="false" Type="String" Unicode="true" cg:SetterAccess="Internal" />
+                    <Property Name="Password" MaxLength="32" Nullable="false" Type="String" Unicode="true" cg:GetterAccess="Internal" cg:SetterAccess="Internal" />
+                    <NavigationProperty Name="Deck" FromRole="Account" Relationship="Game.Logic.Model.AccountCards" ToRole="Card" />
+                    <Property Name="ELO" DefaultValue="1200" Nullable="false" Type="Int32" cg:SetterAccess="Internal" />
+          <NavigationProperty Name="BattlesA" Relationship="Game.Logic.Model.BattleAccount" FromRole="Account" ToRole="Battle" cg:GetterAccess="Public" cg:SetterAccess="Protected" />
+          <NavigationProperty Name="BattlesB" Relationship="Game.Logic.Model.BattleAccount1" FromRole="Account" ToRole="Battle" cg:GetterAccess="Public" cg:SetterAccess="Protected" />
+                </EntityType>
+                <ComplexType Name="CardEffect" cg:TypeAccess="Internal">
+                    <Property Name="Name" DefaultValue="DefaultName" Nullable="false" Type="String" />
+                    <Property Name="Description" DefaultValue="Default Effect" Nullable="false" Type="String" />
+                    <Property Name="CardAttackMultiplier" DefaultValue="1" Nullable="false" Type="Double" />
+                    <Property Name="CardAttackChange" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="CardDefenseMultiplier" DefaultValue="1" Nullable="false" Type="Double" />
+                    <Property Name="CardDefenseChange" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="LifePointsChange" DefaultValue="0" Nullable="false" Type="Double" />
+                    <Property Name="DisableOpponentEffect" DefaultValue="false" Nullable="false" Type="Boolean" />
+                    <Property Name="Affected" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="EffectTiming" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="ProbabilityOfEffect" DefaultValue="0" Nullable="false" Type="Double" />
+                </ComplexType>
+                <EntityType Name="Card" cg:TypeAccess="Internal">
+                    <Key>
+                        <PropertyRef Name="Id" />
+                    </Key>
+                    <Property Name="Id" Nullable="false" Type="Int32" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+                    <Property Name="Name" Nullable="false" Type="String" />
+                    <Property Name="AttackPoints" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="DefensePoints" DefaultValue="0" Nullable="false" Type="Int32" />
+                    <Property Name="Effect" Nullable="false" Type="Game.Logic.Model.CardEffect" />
+                    <Property Name="ImageUrl" Nullable="true" Type="String" />
+                </EntityType>
+                <Association Name="AccountCards">
+                    <End Multiplicity="*" Role="Account" Type="Game.Logic.Model.Account" />
+                    <End Multiplicity="*" Role="Card" Type="Game.Logic.Model.Card" />
+                </Association>
+                <EntityType Name="Battle" cg:TypeAccess="Internal">
+                    <Key>
+                        <PropertyRef Name="Id" />
+                    </Key>
+                    <Property Name="Id" Nullable="false" Type="Int32" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Private" />
+                    <Property Name="Result" Nullable="false" Type="Int32" cg:SetterAccess="Protected" />
+          <NavigationProperty Name="PlayerA" Relationship="Game.Logic.Model.BattleAccount" FromRole="Battle" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Game.Logic.Model.BattleAccount1" FromRole="Battle" ToRole="Account" />
+                </EntityType>
+                <EntityType Name="Room" cg:TypeAccess="Internal">
+                    <Key>
+                        <PropertyRef Name="Id" />
+                    </Key>
+                    <Property Name="Id" Nullable="false" Type="Int32" annotation:StoreGeneratedPattern="Identity" />
+                    <Property Name="Name" Nullable="false" Type="String" />
+                </EntityType>
+                <EntityType Name="UserRank" cg:TypeAccess="Internal">
+                    <Key>
+                        <PropertyRef Name="Username" />
+                    </Key>
+                    <Property Name="Rank" Type="Int64" Nullable="false" />
+                    <Property Name="Username" FixedLength="false" MaxLength="16" Nullable="false" Type="String" Unicode="true" />
+                </EntityType>
+        <Association Name="BattleAccount">
+          <End Type="Game.Logic.Model.Battle" Role="Battle" Multiplicity="*" />
+          <End Type="Game.Logic.Model.Account" Role="Account" Multiplicity="1" />
+        </Association>
+        <Association Name="BattleAccount1">
+          <End Type="Game.Logic.Model.Battle" Role="Battle" Multiplicity="*" />
+          <End Type="Game.Logic.Model.Account" Role="Account" Multiplicity="1" />
+        </Association>
+            </Schema>
+        </edmx:ConceptualModels>
+        <!-- C-S mapping content -->
+        <edmx:Mappings>
+        <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameLogicModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="IsTypeOf(Game.Logic.Model.Account)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ELO" ColumnName="ELO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="IsTypeOf(Game.Logic.Model.Card)">
+        <MappingFragment StoreEntitySet="Cards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AttackPoints" ColumnName="AttackPoints" />
+          <ScalarProperty Name="DefensePoints" ColumnName="DefensePoints" />
+          <ComplexProperty Name="Effect" TypeName="Game.Logic.Model.CardEffect">
+            <ScalarProperty Name="Name" ColumnName="Effect_Name" />
+            <ScalarProperty Name="Description" ColumnName="Effect_Description" />
+            <ScalarProperty Name="CardAttackMultiplier" ColumnName="Effect_CardAttackMultiplier" />
+            <ScalarProperty Name="CardAttackChange" ColumnName="Effect_CardAttackChange" />
+            <ScalarProperty Name="CardDefenseMultiplier" ColumnName="Effect_CardDefenseMultiplier" />
+            <ScalarProperty Name="CardDefenseChange" ColumnName="Effect_CardDefenseChange" />
+            <ScalarProperty Name="LifePointsChange" ColumnName="Effect_LifePointsChange" />
+            <ScalarProperty Name="DisableOpponentEffect" ColumnName="Effect_DisableOpponentEffect" />
+            <ScalarProperty Name="Affected" ColumnName="Effect_Affected" />
+            <ScalarProperty Name="EffectTiming" ColumnName="Effect_EffectTiming" />
+            <ScalarProperty Name="ProbabilityOfEffect" ColumnName="Effect_ProbabilityOfEffect" />
+          </ComplexProperty>
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoredBattles">
+      <EntityTypeMapping TypeName="IsTypeOf(Game.Logic.Model.Battle)">
+        <MappingFragment StoreEntitySet="StoredBattles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="IsTypeOf(Game.Logic.Model.Room)">
+        <MappingFragment StoreEntitySet="Rooms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRanks">
+      <EntityTypeMapping TypeName="IsTypeOf(Game.Logic.Model.UserRank)">
+        <MappingFragment StoreEntitySet="UserRanks">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AccountCards" TypeName="Game.Logic.Model.AccountCards" StoreEntitySet="AccountCards">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="AccountCards_Card_Id" />
+      </EndProperty>
+      <EndProperty Name="Card">
+        <ScalarProperty Name="Id" ColumnName="Deck_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BattleAccount" TypeName="Game.Logic.Model.BattleAccount" StoreEntitySet="StoredBattles">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="PlayerA_Id" />
+      </EndProperty>
+      <EndProperty Name="Battle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BattleAccount1" TypeName="Game.Logic.Model.BattleAccount1" StoreEntitySet="StoredBattles">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="Account_Id" />
+      </EndProperty>
+      <EndProperty Name="Battle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+    </edmx:Runtime>
+    <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+    <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <Connection>
+            <DesignerInfoPropertySet>
+                <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+            </DesignerInfoPropertySet>
+        </Connection>
+        <Options>
+            <DesignerInfoPropertySet>
+                <DesignerProperty Name="ValidateOnBuild" Value="true" />
+                <DesignerProperty Name="EnablePluralization" Value="True" />
+                <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+            </DesignerInfoPropertySet>
+        </Options>
+        <!-- Diagram content (shape and connector positions) -->
+        <Diagrams>
+            <Diagram Name="DomainDataModel" ZoomLevel="85">
+                <EntityTypeShape Height="2.1725878906249996" Width="1.5" EntityType="Game.Logic.Model.Account" PointX="1.875" PointY="2.25" />
+                <EntityTypeShape Height="2.1725878906249996" Width="1.5" EntityType="Game.Logic.Model.Card" PointX="1.875" PointY="5.25" />
+                <AssociationConnector Association="Game.Logic.Model.AccountCards">
+                    <ConnectorPoint PointX="2.625" PointY="4.422587890625" />
+                    <ConnectorPoint PointX="2.625" PointY="5.25" />
+                </AssociationConnector>
+                <EntityTypeShape Height="1.4033821614583331" Width="1.5" EntityType="Game.Logic.Model.Battle" PointX="4" PointY="2.25" />
+                <EntityTypeShape Height="1.4033821614583326" Width="1.5" EntityType="Game.Logic.Model.Room" PointX="4" PointY="5.375" />
+                <EntityTypeShape Height="1.4033821614583317" Width="1.5" EntityType="Game.Logic.Model.UserRank" PointX="6.375" PointY="0.75" />
+        <AssociationConnector Association="Game.Logic.Model.BattleAccount">
+          <ConnectorPoint PointX="4" PointY="3.047841796875" />
+          <ConnectorPoint PointX="3.375" PointY="3.047841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Game.Logic.Model.BattleAccount1">
+          <ConnectorPoint PointX="4" PointY="2.7498514811197916" />
+          <ConnectorPoint PointX="3.375" PointY="2.7498514811197916" />
+        </AssociationConnector>
+            </Diagram>
+        </Diagrams>
+    </Designer>
+</edmx:Edmx>

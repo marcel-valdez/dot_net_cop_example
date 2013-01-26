@@ -1,0 +1,598 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>DependencyLocator</name>
+  </assembly>
+  <members>
+    <member name="T:DependencyLocation.Containers.ConstructorContainer">
+      <summary>
+            Esta clase esta encargada de contener y proveer acceso a constructores de instancias
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Containers.ConstructorContainer.AddInterfaceConstructors(System.Type,System.Type)">
+      <summary>
+            Adds the interface constructors, using the signature of the constructors of the concrete type.
+            </summary>
+      <param name="interfaceType">Type of the interface.</param>
+      <param name="concreteType">Type of the concrete.</param>
+      <returns>Itself</returns>
+      <requires description="interfaceType is null.">interfaceType != null</requires>
+      <requires description="concreteType is null.">concreteType != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.ConstructorContainer.GetConstructor(System.Type[],System.Type)">
+      <summary>
+            Gets the constructor.
+            </summary>
+      <param name="argTypes">The argument types.</param>
+      <param name="interfaceType">Type of the interface.</param>
+      <param name="key">The key.</param>
+      <returns>The callable constructor delegate</returns>
+      <requires description="argTypes is null.">argTypes != null</requires>
+      <requires description="interfaceType is null.">interfaceType != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.ConstructorContainer.HasRegistered(System.Type)">
+      <summary>
+            Determines whether the specified interface type has been registered.
+            </summary>
+      <param name="interfaceType">Type of the interface.</param>
+      <returns>
+        <c>true</c> if the specified interface type has been registered; otherwise, <c>false</c>.
+            </returns>
+      <requires>interfaceType != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.ConstructorContainer.GetMatchingConstructor(DependencyLocation.Containers.InterfaceConstructorsContainer,System.Type[])">
+      <summary>
+            Matches the types.
+            </summary>
+      <param name="constructors">The constructors.</param>
+      <param name="argTypes">The arg types.</param>
+      <returns>ConstructorInvoker that matches the <paramref name="argTypes" /></returns>
+      <requires description="constructors is null.">constructors != null</requires>
+      <requires description="argumentTypes is null or empty.">argTypes != null</requires>
+      <ensures>Contract.Result&lt;ConstructorInvoker&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.ConstructorContainer.MakeErrorMsg(DependencyLocation.Containers.InterfaceConstructorsContainer,System.Type[])">
+      <summary>
+            Makes the error message.
+            </summary>
+      <param name="constructors">The constructors.</param>
+      <param name="argTypes">The arg types.</param>
+      <returns>The error message</returns>
+      <requires description="constructors is null.">constructors != null</requires>
+      <requires description="argTypes is null or empty.">argTypes != null</requires>
+      <ensures>!String.IsNullOrEmpty(Contract.Result&lt;string&gt;())</ensures>
+    </member>
+    <member name="F:DependencyLocation.DependencyController.mConstructors">
+      <summary>
+            Los constructores para los tipos sin parámetros genéricos sin definir
+            </summary>
+    </member>
+    <member name="F:DependencyLocation.DependencyController.mGenericDefinitions">
+      <summary>
+            Las definiciones de tipos genéricos configuradas
+            </summary>
+    </member>
+    <member name="F:DependencyLocation.DependencyController.mConfiguration">
+      <summary>
+            Son los valores de configuración del usuario
+            </summary>
+    </member>
+    <member name="F:DependencyLocation.DependencyController.mSingletons">
+      <summary>
+            Son los singletons registrados en la aplicación
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.GetConfiguration``1(System.Object)">
+      <summary>
+            Gets a configuration value.
+            </summary>
+      <typeparam name="T">The type of the configuration value</typeparam>
+      <param name="key">The key.</param>
+      <returns>The configuration value identified with the <para>key</para></returns>
+      <requires inheritedFrom="M:DependencyLocation.IDependencyProvider.GetConfiguration``1(System.Object)" inheritedFromTypeName="IDependencyProvider">key != null</requires>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.Create``1(System.Object[])">
+      <summary>
+            Creates the an instance of the type <typeparamref name="TInterface" />.
+            </summary>
+      <typeparam name="TInterface">The type of the interface.</typeparam>
+      <param name="args">The args.</param>
+      <returns>Creates a named instance with the registered constructor for the type <typeparamref name="TInterface" /></returns>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.CreateNamed``1(System.String,System.Object[])">
+      <summary>
+            Creates the named.
+            </summary>
+      <typeparam name="TInterface">The type of the interface.</typeparam>
+      <param name="key">The key.</param>
+      <param name="args">The args.</param>
+      <returns>Creates a named instance with the registered constructor for the type <typeparamref name="TInterface" /></returns>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.GetSingleton``1(System.String)">
+      <summary>
+            Gets the singleton.
+            </summary>
+      <typeparam name="TInterface">The type of the interface.</typeparam>
+      <param name="key">The key.</param>
+      <returns>The registered singleton for the type <typeparamref name="TInterface" /></returns>
+      <ensures inheritedFrom="M:DependencyLocation.IDependencyProvider.GetSingleton``1(System.String)" inheritedFromTypeName="IDependencyProvider">Contract.Result&lt;TInterface&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.MakePair(System.Type,System.String)">
+      <summary>
+            Gets the pair.
+            </summary>
+      <param name="type">The type.</param>
+      <param name="key">The key.</param>
+      <returns>Generated KeyValuePair</returns>
+      <requires description="type is null.">type != null</requires>
+      <requires description="key is null.">key != null</requires>
+    </member>
+    <member name="P:DependencyLocation.DependencyController.DefaultKey">
+      <summary>
+            Gets or sets the default key.
+            </summary>
+      <value>
+            The default key.
+            </value>
+    </member>
+    <member name="T:DependencyLocation.Containers.GenericDefinitionContainer">
+      <summary>
+            Tiene la responsabilidad de guardar una relación de una definición
+            de tipo genérico con un tipo concreto que la implementa.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Containers.GenericDefinitionContainer.#ctor(System.Type)">
+      <summary>
+            Initializes a new instance of the <see cref="T:DependencyLocation.Containers.GenericDefinitionContainer" /> class.        
+            </summary>
+      <param name="genericDefiniton">The generic definiton.</param>
+      <requires description="genericDefinition can't be null">genericDefinition != null</requires>
+      <requires description="genericDefinition must be a generic type definition">genericDefinition.IsGenericTypeDefinition</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.GenericDefinitionContainer.SetConcrete(System.Type)">
+      <summary>
+            Sets the concrete type with which to create instances of the generic type definition.
+            </summary>
+      <param name="concrete">The concrete generic type definition.</param>
+      <returns>Itself</returns>
+      <requires description="Concrete type can't be null">concrete != null</requires>
+      <requires description="Concrete type must be a generic type definition">concrete.IsGenericTypeDefinition</requires>
+      <requires description="Concrete type can't be abstract.">!concrete.IsAbstract</requires>
+      <ensures>Contract.Result&lt;GenericDefinitionContainer&gt;().Equals(this)</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.GenericDefinitionContainer.CanMake(System.Type)">
+      <summary>
+            Determines whether this instance can make the specified generic type.
+            </summary>
+      <param name="generic">The generic type.</param>
+      <returns>
+        <c>true</c> if this instance can make the specified generic type; otherwise, <c>false</c>.
+            </returns>
+      <requires description="generic can't be null">generic != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.GenericDefinitionContainer.AddInterfaceConstructors(System.Type,DependencyLocation.Containers.ConstructorContainer)">
+      <summary>
+            Makes the interface constructors.
+            </summary>
+      <param name="generic">The generic.</param>
+      <returns>The interface constructors for the generic type</returns>
+      <requires description="generic can't be null">generic != null</requires>
+      <requires description="The constructor container can't be null">container != null</requires>
+      <requires>this.CanMake(generic)</requires>
+      <ensures>Contract.Result&lt;GenericDefinitionContainer&gt;().Equals(this)</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.GenericDefinitionContainer.GetGenericDefinition">
+      <summary>
+            Gets the generic definition.
+            </summary>
+      <returns>The generic type definition</returns>
+      <ensures>Contract.Result&lt;Type&gt;() != null</ensures>
+      <ensures>Contract.Result&lt;Type&gt;().IsGenericTypeDefinition</ensures>
+    </member>
+    <member name="T:DependencyLocation.Containers.InterfaceConstructorsContainer">
+      <summary>
+            This class is in charge of containing and giving access to constructors of a concrete type
+            that satisfies a given interface
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.#ctor(System.Type)">
+      <summary>
+            Initializes a new instance of the <see cref="!:InterfaceConstructors" /> class.
+            </summary>
+      <param name="interfaceType">Type of the interface.</param>
+      <requires>interfaceType != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.SetConcrete``1">
+      <summary>
+            Sets the concrete implementation of the interface
+            </summary>
+      <typeparam name="T">Concrete type of the interface implementation</typeparam>
+      <requires>this.GetInterface().IsAssignableFrom(typeof(T))</requires>
+      <ensures>Contract.Result&lt;InterfaceConstructorsContainer&gt;() == this</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.SetConcrete(System.Type)">
+      <summary>
+            Sets the concrete implementation of the interface
+            </summary>
+      <param name="concreteType">Concrete type of the interface implementation</param>
+      <requires>this.GetInterface().IsAssignableFrom(concreteType)</requires>
+      <ensures>Contract.Result&lt;InterfaceConstructorsContainer&gt;() == this</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.IsType``1">
+      <summary>
+            Verifies if the interface satisfied by these constructors is of type T
+            </summary>
+      <typeparam name="T">Type of interface satisfied</typeparam>
+      <returns>
+        <c>true</c> if this instance is type; otherwise, <c>false</c>.
+            </returns>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.IsType(System.Type)">
+      <summary>
+            Verifies if the interface satisfied by these constructors is of type 'type'
+            </summary>
+      <param name="type">The type.</param>
+      <returns>
+        <c>true</c> if the specified type is type; otherwise, <c>false</c>.
+            </returns>
+      <requires>type != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.GetInterface">
+      <summary>
+            Gets the interface for which the constructors are defined
+            </summary>
+      <returns />
+      <ensures>Contract.Result&lt;Type&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.TryGetConstructor(Fasterflect.ConstructorInvoker@,System.Type[])">
+      <summary>
+            Tries to get a constructor that can be called with the given parameter types
+            </summary>
+      <param name="ctor">The ctor.</param>
+      <param name="parameterTypes">The parameter types.</param>
+      <returns>true if successful, false otherwise</returns>
+      <requires>parameterTypes != null</requires>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:DependencyLocation.Containers.InterfaceConstructorsContainer.TryGetConstructor(Fasterflect.ConstructorInvoker@,System.Object[])" -->
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.DefineConstructors(System.Type)">
+      <summary>
+            Defines and stores in memory the constructors for the type concreteType.
+            </summary>
+      <requires>concreteType != null</requires>
+      <requires description="Concrete type can't be abstract.">!concreteType.IsAbstract</requires>
+      <ensures>Contract.Result&lt;InterfaceConstructorsContainer&gt;() == this</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.ClearConstructors">
+      <summary>
+            Clears the constructors.
+            </summary>
+      <ensures>Contract.Result&lt;InterfaceConstructorsContainer&gt;() == this</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.AddConstructor(System.Reflection.ConstructorInfo)">
+      <summary>
+            Adds the constructor.
+            </summary>
+      <param name="constructor">The constructor.</param>
+      <param name="target">The target.</param>
+      <param name="key">The key.</param>
+      <requires>constructor != null</requires>
+      <ensures>Contract.Result&lt;InterfaceConstructorsContainer&gt;() == this</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.Equals(System.Object)">
+      <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+      <param name="other">The <see cref="T:System.Object" /> to compare with this instance.</param>
+      <returns>
+        <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.GetHashCode">
+      <summary>
+            Returns a hash code for this instance.
+            </summary>
+      <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+    </member>
+    <member name="M:DependencyLocation.Extensions.ReflectionExtensions.IsSubclassOrImplementsBaseGeneric(System.Type,System.Type)">
+      <summary>
+            Determines whether [is subclass or implements base generic] [the specified sub generic].
+            </summary>
+      <param name="subGeneric">The generic type.</param>
+      <param name="baseGeneric">The base generic.</param>
+      <returns>
+        <c>true</c> if [is subclass of raw generic] [the specified sub generic]; otherwise, <c>false</c>.
+            </returns>
+      <requires description="subGeneric is null.">subGeneric != null</requires>
+      <requires description="baseGeneric is null.">baseGeneric != null</requires>
+      <requires>baseGeneric.IsGenericType</requires>
+    </member>
+    <member name="M:DependencyLocation.Extensions.ReflectionExtensions.GetParamTypes(System.Reflection.ConstructorInfo)">
+      <summary>
+            Gets the parameter types of a constructor.
+            </summary>
+      <param name="constructor">The constructor.</param>
+      <returns>The parameter types</returns>
+      <requires>constructor != null</requires>
+      <ensures>Contract.Result&lt;Type[]&gt;() != null</ensures>
+    </member>
+    <member name="P:DependencyLocation.Dependency.Locator">
+      <summary>
+            Gets the dependency injector.
+            </summary>
+    </member>
+    <member name="T:DependencyLocation.Configuration.DependencyCollection">
+      <summary>
+            Colección de elementos de configuración de dependencias
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:DependencyLocation.Configuration.DependencyCollection" /> class.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.#ctor(System.Collections.IComparer)">
+      <summary>
+            Initializes a new instance of the <see cref="T:DependencyLocation.Configuration.DependencyCollection" /> class.
+            </summary>
+      <param name="comparer">The <see cref="T:System.Collections.IComparer" /> comparer to use.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="comparer" /> is null.</exception>
+      <requires description="comparer is null.">comparer != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.CreateNewElement">
+      <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement" />.
+            </summary>
+      <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement" />.
+            </returns>
+      <ensures inheritedFrom="M:System.Configuration.ConfigurationElementCollection.CreateNewElement" inheritedFromTypeName="ConfigurationElementCollection">Contract.Result&lt;ConfigurationElement&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+      <param name="element">The <see cref="T:System.Configuration.ConfigurationElement" /> to return the key for.</param>
+      <returns>
+            An <see cref="T:System.Object" /> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement" />.
+            </returns>
+      <requires inheritedFrom="M:System.Configuration.ConfigurationElementCollection.GetElementKey(System.Configuration.ConfigurationElement)" inheritedFromTypeName="ConfigurationElementCollection">element != null</requires>
+      <ensures inheritedFrom="M:System.Configuration.ConfigurationElementCollection.GetElementKey(System.Configuration.ConfigurationElement)" inheritedFromTypeName="ConfigurationElementCollection">Contract.Result&lt;object&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.Add(DependencyLocation.Configuration.DependencyElement)">
+      <summary>
+            Adds the specified element.
+            </summary>
+      <param name="element">The element.</param>
+      <requires description="element is null.">element != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.Clear">
+      <summary>
+            Clears this instance.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.Remove(DependencyLocation.Configuration.DependencyElement)">
+      <summary>
+            Removes the specified element.
+            </summary>
+      <param name="element">The element.</param>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.Remove(System.String)">
+      <summary>
+            Removes the specified name.
+            </summary>
+      <param name="name">The name.</param>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyCollection.RemoveAt(System.Int32)">
+      <summary>
+            Removes at the specified index.
+            </summary>
+      <param name="index">The index.</param>
+    </member>
+    <member name="P:DependencyLocation.Configuration.DependencyCollection.CollectionType">
+      <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection" />.
+            </summary>
+      <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType" /> of this collection.</returns>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyElement.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:DependencyLocation.Configuration.DependencyElement" /> class.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Configuration.DependencyElement.#ctor(System.String,System.String,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:DependencyLocation.Configuration.DependencyElement" /> class.
+            </summary>
+      <param name="assembly name">The assembly name.</param>
+      <param name="assembly path">The assembly path.</param>
+      <param name="named instanc eprefix">The named instance prefix.</param>
+    </member>
+    <member name="T:DependencyLocation.Setup.DependencyLoader">
+      <summary>
+            Clase para cargar todas las dependencias en el dominio de la aplicación en ejecución.
+            Cada librería que desee registrarse en el DependencyInjector, debe tener una o más clases
+            que implementen <typeparamref name="IDependencySetup" /></summary>
+    </member>
+    <member name="M:DependencyLocation.Setup.DependencyLoader.LoadDependencies(System.String)">
+      <summary>
+            Loads the dependencies.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Setup.DependencyLoader.LoadAssembly(System.String,System.String)">
+      <summary>
+            Loads an assembly, by using either its name or its path.
+            </summary>
+      <param name="name">The name.</param>
+      <param name="path">The path.</param>
+      <returns>The loaded Assembly</returns>
+      <requires description="both path and name are null or empty.">!String.IsNullOrEmpty(name) || !String.IsNullOrEmpty(path)</requires>
+    </member>
+    <member name="M:DependencyLocation.Setup.DependencyLoader.GetDependencies(DependencyLocation.Configuration.DependencyConfiguration)">
+      <summary>
+            Gets the dependencies in the configuration
+            </summary>
+      <returns>The dependencies</returns>
+      <param name="configSection" />
+    </member>
+    <member name="M:DependencyLocation.Setup.DependencyLoader.GetConfigSection(System.String)">
+      <summary>
+            Gets the config section.
+            </summary>
+      <returns />
+    </member>
+    <member name="P:DependencyLocation.Setup.DependencyLoader.Loader">
+      <summary>
+            Gets the loader.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Extensions.HashCodeHelper.GetHashCode``1(``0[])">
+      <summary>
+            Returns a hash code for this instance.
+            </summary>
+      <typeparam name="T" />
+      <param name="args">The args.</param>
+      <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+    </member>
+    <member name="M:DependencyLocation.Extensions.HashCodeHelper.GetArrayHashCodeByByte``1(``0[])">
+      <summary>
+            Gets the hash value for an array object.
+            </summary>
+      <typeparam name="T">Type of objects in the array</typeparam>
+      <param name="objects">The objects.</param>
+      <returns>int hash value</returns>
+    </member>
+    <member name="M:DependencyLocation.Extensions.HashCodeHelper.GetArrayHashCode``1(``0[])">
+      <summary>
+            Gets the hash value for an array object.
+            </summary>
+      <typeparam name="T">Type of objects in the array</typeparam>
+      <param name="objects">The objects.</param>
+      <returns>int hash value</returns>
+    </member>
+    <member name="M:DependencyLocation.Extensions.HashCodeHelper.GetFnvHash(System.Byte[])">
+      <summary>
+            Gets the FNV hash.
+            </summary>
+      <param name="data">The data.</param>
+      <returns>int value for the hash</returns>
+    </member>
+    <member name="M:DependencyLocation.Extensions.HashCodeHelper.GetFnvHash(System.Int32[])">
+      <summary>
+            Gets the FNV hash.
+            </summary>
+      <param name="data">The data.</param>
+      <returns>int value for the hash</returns>
+    </member>
+    <member name="T:DependencyLocation.Properties.Resources">
+      <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+    </member>
+    <member name="P:DependencyLocation.Properties.Resources.ResourceManager">
+      <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+    </member>
+    <member name="P:DependencyLocation.Properties.Resources.Culture">
+      <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+    </member>
+    <member name="P:DependencyLocation.Properties.Resources.AnErrorOcurredDuringConfiguration">
+      <summary>
+              Looks up a localized string similar to An error ocurred during configuration, value: {0}, cannot be set for the key: {1}..
+            </summary>
+    </member>
+    <member name="P:DependencyLocation.Properties.Resources.ConfigFileNotFound">
+      <summary>
+              Looks up a localized string similar to El archivo de configuracion {0} no existe.
+            </summary>
+    </member>
+    <member name="P:DependencyLocation.Properties.Resources.ConfigurationValueNotSetForKey">
+      <summary>
+              Looks up a localized string similar to Configuration value for {0} not set..
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Extensions.ParamTypeArrayComparer.IsAssignableFrom(System.Type[],System.Type[])">
+      <summary>
+            Determines whether the specified [toTypes] are assignable from [fromTypes].
+            </summary>
+      <param name="toTypes">To types.</param>
+      <param name="fromTypes">From types.</param>
+      <returns>
+        <c>true</c> if the specified "to types" are assignable "from types"; otherwise, <c>false</c>.
+            </returns>
+      <requires description="toTypes is null.">toTypes != null</requires>
+      <requires description="fromTypes is null.">fromTypes != null</requires>
+    </member>
+    <member name="M:DependencyLocation.Extensions.ParamTypeArrayComparer.EqualsTo(System.Type[],System.Type[])">
+      <summary>
+            Compared the array X with the array Y
+            </summary>
+      <param name="x">The array X.</param>
+      <param name="y">The array Y.</param>
+      <returns>true if they are equal, false otherwise.</returns>
+      <requires description="x is null.">x != null</requires>
+      <requires description="y is null.">y != null</requires>
+    </member>
+    <member name="T:DependencyLocation.Reflection.TypeArrayComparer">
+      <summary>
+            Clase utilizada para comparar 2 arreglos de tipos.
+            </summary>
+    </member>
+    <member name="M:DependencyLocation.Reflection.TypeArrayComparer.Equals(System.Type[],System.Type[])">
+      <summary>
+            Compared the array X with the array Y
+            </summary>
+      <param name="x">The array X.</param>
+      <param name="y">The array Y.</param>
+      <returns>true if they are equal, false otherwise.</returns>
+    </member>
+    <member name="M:DependencyLocation.Reflection.TypeArrayComparer.GetHashCode(System.Type[])">
+      <summary>
+            Returns a hash code for this instance.
+            </summary>
+      <param name="obj">The obj.</param>
+      <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.PutConfiguration(System.Object,System.Object)">
+      <requires inheritedFrom="M:DependencyLocation.IDependencyConfigurator.PutConfiguration(System.Object,System.Object)" inheritedFromTypeName="IDependencyConfigurator">key != null</requires>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.SetupDependency(System.Type,System.Type,System.String)">
+      <requires inheritedFrom="M:DependencyLocation.IDependencyConfigurator.SetupDependency(System.Type,System.Type,System.String)" inheritedFromTypeName="IDependencyConfigurator">concreteType != null</requires>
+      <requires inheritedFrom="M:DependencyLocation.IDependencyConfigurator.SetupDependency(System.Type,System.Type,System.String)" inheritedFromTypeName="IDependencyConfigurator">abstractType != null</requires>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.PutConfiguration``1(System.Object,System.Func{``0})">
+      <requires description="key is null." inheritedFrom="M:DependencyLocation.IDependencyConfigurator.PutConfiguration``1(System.Object,System.Func{``0})" inheritedFromTypeName="IDependencyConfigurator">key != null</requires>
+      <requires description="lazyEvaluator is null." inheritedFrom="M:DependencyLocation.IDependencyConfigurator.PutConfiguration``1(System.Object,System.Func{``0})" inheritedFromTypeName="IDependencyConfigurator">lazyEvaluator != null</requires>
+    </member>
+    <member name="M:DependencyLocation.DependencyController.SetupGenericDependency(System.Type,System.Type,System.String)">
+      <requires description="Concrete type can't be null.">concreteType != null</requires>
+      <requires description="Abstract type can't be null">abstractType != null</requires>
+      <requires description="Concrete type must be a generic type definition">concreteType.IsGenericTypeDefinition</requires>
+      <requires description="Abstract type must be a generic type definition">abstractType.IsGenericTypeDefinition</requires>
+      <requires description="Concrete type can't be abstract.">!concreteType.IsAbstract</requires>
+      <requires>concreteType.IsSubclassOrImplementsBaseGeneric(abstractType)</requires>
+    </member>
+    <member name="M:DependencyLocation.Setup.DependencyLoader.ReadConfigFileMap(System.String)">
+      <requires description="El nombre de archivo no debe ser vacío o nulo.">!string.IsNullOrEmpty(configFilePath)</requires>
+    </member>
+    <member name="M:DependencyLocation.Extensions.ReflectionExtensions.LookupPair``1(System.Collections.Generic.IDictionary{System.Collections.Generic.KeyValuePair{System.Type,System.String},System.Object},System.Type,System.String)">
+      <requires description="dict is null.">dict != null</requires>
+      <requires description="type is null.">type != null</requires>
+      <requires description="key is null.">key != null</requires>
+      <ensures>Contract.Result&lt;T&gt;() != null</ensures>
+    </member>
+    <member name="M:DependencyLocation.Containers.InterfaceConstructorsContainer.TryGetConstructor(Fasterflect.ConstructorInvoker@,System.Object[])">
+      <requires>parameters != null</requires>
+    </member>
+  </members>
+</doc>

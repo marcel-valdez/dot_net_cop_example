@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BadUsername" xml:space="preserve">
+    <value>El nombre de usuario debe ser entre 4-16 caracteres alfanuméricos, - y _</value>
+    <comment>BadUsername description</comment>
+  </data>
+  <data name="CantCreateAccAlreadyLoggedIn" xml:space="preserve">
+    <value>Usted ya ha ingresado al sistema, 
+no puede crear otra cuenta.</value>
+    <comment>CantCreateAccAlreadyLoggedIn description</comment>
+  </data>
+  <data name="UsernameRegx" xml:space="preserve">
+    <value>[a-zA-Z0-9_-]{4,16}</value>
+    <comment>UsernameRegx description</comment>
+  </data>
+  <data name="PasswordRegx" xml:space="preserve">
+    <value>[.]{4,16}</value>
+    <comment>PasswordRegx description</comment>
+  </data>
+  <data name="BadPasswordConfirmation" xml:space="preserve">
+    <value>El password y confirmación de password deben ser iguales.</value>
+    <comment>BadPasswordConfirmation description</comment>
+  </data>
+  <data name="BadEmptyUsername" xml:space="preserve">
+    <value>El nombre de usuario no puede estar vacío</value>
+    <comment>BadEmptyUsername description</comment>
+  </data>
+  <data name="BadEmptyPassword" xml:space="preserve">
+    <value>El password no puede estar vacío</value>
+    <comment>BadEmptyPassword description</comment>
+  </data>
+  <data name="AccountCreationSuccessful" xml:space="preserve">
+    <value>Cuenta creada exitósamente.</value>
+    <comment>AccountCreationSuccessful description</comment>
+  </data>
+  <data name="LoginAlreadySignedIn" xml:space="preserve">
+    <value>Usted ya ha ingresado al sistema. Proceda a su página de Inicio.</value>
+    <comment>LoginAlreadySignedIn description</comment>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Usted ha ingresado al sistema.</value>
+    <comment>LoginSuccessful description</comment>
+  </data>
+  <data name="TotalGamesWon" xml:space="preserve">
+    <value>Juegos ganados: </value>
+    <comment>StatsJuegosGanadosText description</comment>
+  </data>
+  <data name="TotalGamesPlayed" xml:space="preserve">
+    <value>Juegos en total: </value>
+    <comment>TotalGamesPlayed description</comment>
+  </data>
+  <data name="TotalGamesLost" xml:space="preserve">
+    <value>Juegos perdidos: </value>
+    <comment>TotalGamesLost description</comment>
+  </data>
+  <data name="PlayerRanking" xml:space="preserve">
+    <value>Player ranking: </value>
+    <comment>PlayerRanking description</comment>
+  </data>
+  <data name="ErrorUserNotAuthentified" xml:space="preserve">
+    <value>El usuario no está autentificado.</value>
+    <comment>ErrorUserNotAuthentified description</comment>
+  </data>
+  <data name="HomePageTitle" xml:space="preserve">
+    <value>Página Principal</value>
+    <comment>HomePageTitle description</comment>
+  </data>
+  <data name="WelcomeMessagePrefix" xml:space="preserve">
+    <value>Bienvenido, {0}</value>
+    <comment>WelcomeMessagePrefix description</comment>
+  </data>
+  <data name="RoomsListTitle" xml:space="preserve">
+    <value>Salas de Juego</value>
+    <comment>RoomsListTitle description</comment>
+  </data>
+  <data name="HasJoinedRoomSuccess" xml:space="preserve">
+    <value>Se ha unido a la sala {0}</value>
+    <comment>HasJoinedRoomSuccess description</comment>
+  </data>
+  <data name="JoinRoomFail" xml:space="preserve">
+    <value>No se ha podido unir a la sala</value>
+    <comment>JoinRoomFail description</comment>
+  </data>
+  <data name="LogoutBtnText" xml:space="preserve">
+    <value>Salir</value>
+    <comment>LogoutBtnText description</comment>
+  </data>
+  <data name="PrimeroDebeEntrarAUnCuarto" xml:space="preserve">
+    <value>Primero debe entrar a un cuarto.</value>
+    <comment>PrimeroDebeEntrarAUnCuarto description</comment>
+  </data>
+  <data name="PendingBattleDialogTitle" xml:space="preserve">
+    <value>Batalla pendiente</value>
+    <comment>PendingBattleDialogTitle description</comment>
+  </data>
+  <data name="PendingBattleDialogSubtitle" xml:space="preserve">
+    <value>Usted ya está en una batalla</value>
+    <comment>PendingBattleDialogSubtitle description</comment>
+  </data>
+  <data name="PendingBattleDialogMessage" xml:space="preserve">
+    <value>Presione el botón para redirigirse a la batalla</value>
+    <comment>PendingBattleDialogMessage description</comment>
+  </data>
+  <data name="PendingBattleDialogBtnText" xml:space="preserve">
+    <value>Ir a Batalla</value>
+    <comment>PendingBattleDialogBtnText description</comment>
+  </data>
+  <data name="FindingBattleDialogTitle" xml:space="preserve">
+    <value>Buscando batalla</value>
+    <comment>FindingBattleDialogTitle description</comment>
+  </data>
+  <data name="FindingBattleDialogMessage" xml:space="preserve">
+    <value>Favor de esperar en lo que encontramos
+su oponente</value>
+    <comment>FindingBattleDialogMessage description</comment>
+  </data>
+  <data name="FindingBattleDialogButtonTxt" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>FindingBattleDialogButtonTxt description</comment>
+  </data>
+  <data name="ChallengeDialogTitle" xml:space="preserve">
+    <value>Reto enviado</value>
+    <comment>ChallengeDialogTitle description</comment>
+  </data>
+  <data name="ChallengeDialogMessage" xml:space="preserve">
+    <value>Usted ha enviado un reto</value>
+    <comment>ChallengeDialogMessage description</comment>
+  </data>
+  <data name="ChallengeDialogCancelBtn" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>ChallengeDialogCancelBtn description</comment>
+  </data>
+  <data name="ChallengeRecvdDialogTitle" xml:space="preserve">
+    <value>Reto recibido</value>
+    <comment>ChallengeRecvdDialogTitle description</comment>
+  </data>
+  <data name="ChallengeRecvdDialogSubtitle" xml:space="preserve">
+    <value>Usted ha recibido un reto de {0}</value>
+    <comment>ChallengeRecvdDialogSubtitle description</comment>
+  </data>
+  <data name="ChallengeRecvdDialogMessage" xml:space="preserve">
+    <value>¿Desea aceptar o rechazar el reto?</value>
+    <comment>ChallengeRecvdDialogMessage description</comment>
+  </data>
+  <data name="AcceptBtnTxt" xml:space="preserve">
+    <value>Aceptar</value>
+    <comment>AcceptBtnTxt description</comment>
+  </data>
+  <data name="RejectBtnTxt" xml:space="preserve">
+    <value>Rechazar</value>
+    <comment>RejectBtnTxt description</comment>
+  </data>
+  <data name="RoomUserIdle" xml:space="preserve">
+    <value>En Sala</value>
+    <comment>RoomUserIdl description</comment>
+  </data>
+  <data name="RoomUserPlaying" xml:space="preserve">
+    <value>Jugando</value>
+    <comment>RoomUserPlaying description</comment>
+  </data>
+  <data name="RoomUserRequestedBattle" xml:space="preserve">
+    <value>Esperando</value>
+    <comment>RoomUserRequested description</comment>
+  </data>
+  <data name="RoomUserRequestedChallenge" xml:space="preserve">
+    <value>Esperando</value>
+    <comment>RoomUserRequestedChallenge description</comment>
+  </data>
+  <data name="BadChosenChallengeeMessage" xml:space="preserve">
+    <value>Sólo puedes retar a otros usuarios con estado: {0}</value>
+    <comment>BadChosenChallengeeMessage description</comment>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+    <comment>Error description</comment>
+  </data>
+</root>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@5 @3 Type=BattleCardPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="BattleCardPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=BattlePlayerInfo)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="BattlePlayerInfo" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=BattlePresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="BattlePresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=CreateAccountPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="CreateAccountPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=ErrorUserStats)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="ErrorUserStats" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=HomePresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="HomePresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=LoginPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="LoginPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=LogoutButtonPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="LogoutButtonPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=RoomPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="RoomPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=SessionHelper)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsInternal="True" Label="SessionHelper" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=StatisticsPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="StatisticsPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=UserDialogOptions)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="UserDialogOptions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=UserDialogPresentation)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="UserDialogPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IBattleCardPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IBattleCardPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IBattlePlayerPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IBattlePlayerPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IBattlePresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IBattlePresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=ICreateAccountPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="ICreateAccountPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IHomePresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IHomePresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=ILoginPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="ILoginPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=ILogoutButtonPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="ILogoutButtonPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IRoomPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IRoomPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IStatisticsPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IStatisticsPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IUserDialogPresentation)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IUserDialogPresentation" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="@2" Category="CodeSchema_Namespace" Label="Game.Presentation" />
+    <Node Id="@4" Category="CodeSchema_Namespace" Label="Game.Presentation.Impl" />
+  </Nodes>
+  <Links>
+    <Link Source="@2" Target="(@6 @1 Type=IBattleCardPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IBattlePlayerPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IBattlePresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=ICreateAccountPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IHomePresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=ILoginPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=ILogoutButtonPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IRoomPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IStatisticsPresentation)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IUserDialogPresentation)" Category="Contains" />
+    <Link Source="@2" Target="@4" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=BattleCardPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=BattlePlayerInfo)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=BattlePresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=CreateAccountPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=ErrorUserStats)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=HomePresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=LoginPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=LogoutButtonPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=RoomPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=SessionHelper)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=StatisticsPresentation)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=UserDialogOptions)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=UserDialogPresentation)" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Block" Label="Block" BasedOn="CodeSchema_Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Blocks" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Interface" Label="Interface" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" IsProviderRoot="False" NavigationActionLabel="Interfaces" />
+    <Category Id="CodeSchema_Namespace" Label="Namespace" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" IsProviderRoot="False" NavigationActionLabel="Namespaces" />
+    <Category Id="CodeSchema_Statement" Label="Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Statement" />
+    <Category Id="CodeSchema_Type" Label="Type" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="IsAbstract" Description="IsAbstract" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="IsFinal" Description="IsFinal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="IsInternal" Description="IsInternal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="IsPublic" Description="IsPublic" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Id="Namespace=Game.Presentation" />
+    <Alias n="2" Id="(@1)" />
+    <Alias n="3" Id="Namespace=Game.Presentation.Impl" />
+    <Alias n="4" Id="(@3)" />
+    <Alias n="5" Uri="Assembly=$(6e80743e-651f-41e5-8807-62dd18442613.OutputPathUri)" />
+    <Alias n="6" Uri="Assembly=$(253f3338-17e9-41b8-8495-34c5f6a7f409.OutputPathUri)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="253f3338-17e9-41b8-8495-34c5f6a7f409.OutputPathUri" Value="file:///D:/proyects/EducationalProyects/Proyecto-Arquitectura/trunk/PresentationLayerInterfaces/bin/Debug/Game.Presentation.dll" />
+    <Path Id="6e80743e-651f-41e5-8807-62dd18442613.OutputPathUri" Value="file:///D:/proyects/EducationalProyects/Proyecto-Arquitectura/trunk/PresentationLayerImpl/bin/Debug/Game.Presentation.Impl.dll" />
+  </Paths>
+</DirectedGraph>

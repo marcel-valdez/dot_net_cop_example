@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="ForceDirected" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@5 @3 Type=(Name=Container GenericParameterCount=1))" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="Container&lt;T&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=ChannelHandlersContainer)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="ChannelHandlersContainer" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=ChannelMessagesContainer)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="ChannelMessagesContainer" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=HandlerMap)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" IsHub="True" Label="HandlerMap" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=Log)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="Log" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=MessageMap)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" IsHub="True" Label="MessageMap" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=MessageQueue)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="MessageQueue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@5 @3 Type=Messaging)" Category="CodeSchema_Class" CodeSchemaProperty_IsInternal="True" Label="Messaging" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=ILog)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="ILog" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=ILogCodeContract)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsInternal="True" Label="ILogCodeContract" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IMessageQueue)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IMessageQueue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IMessageQueueCodeContract)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsInternal="True" Label="IMessageQueueCodeContract" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IMessaging)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Label="IMessaging" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=IMessagingCodeContract)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsInternal="True" Label="IMessagingCodeContract" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@6 @1 Type=RequestContext)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" Label="RequestContext" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="@2" Category="CodeSchema_Namespace" IsHub="True" Label="Game.Core" />
+    <Node Id="@4" Category="CodeSchema_Namespace" IsHub="True" Label="Game.Core.Impl" />
+  </Nodes>
+  <Links>
+    <Link Source="@2" Target="(@6 @1 Type=ILog)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=ILogCodeContract)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IMessageQueue)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IMessageQueueCodeContract)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IMessaging)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=IMessagingCodeContract)" Category="Contains" />
+    <Link Source="@2" Target="(@6 @1 Type=RequestContext)" Category="Contains" />
+    <Link Source="@2" Target="@4" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=(Name=Container GenericParameterCount=1))" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=ChannelHandlersContainer)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=ChannelMessagesContainer)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=HandlerMap)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=Log)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=MessageMap)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=MessageQueue)" Category="Contains" />
+    <Link Source="@4" Target="(@5 @3 Type=Messaging)" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Block" Label="Block" BasedOn="CodeSchema_Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Blocks" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Interface" Label="Interface" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" IsProviderRoot="False" NavigationActionLabel="Interfaces" />
+    <Category Id="CodeSchema_Namespace" Label="Namespace" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" IsProviderRoot="False" NavigationActionLabel="Namespaces" />
+    <Category Id="CodeSchema_Statement" Label="Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Statement" />
+    <Category Id="CodeSchema_Type" Label="Type" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="IsAbstract" Description="IsAbstract" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="IsFinal" Description="IsFinal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="IsInternal" Description="IsInternal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="IsPublic" Description="IsPublic" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Progression.Layout.GraphDirection" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsHub" Label="Hub" Description="Node is in the top 25% of highly connected nodes.  Other nodes not directly connecting these hubs have been hidden to simplify the graph." DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Hub" ToolTip="Node is in the top 25% of highly connected nodes.  Other nodes not directly connecting these hubs have been hidden to simplify the graph." ValueLabel="True">
+      <Condition Expression="IsHub" />
+      <Setter Property="Background" Value="#FF008080" />
+    </Style>
+  </Styles>
+  <IdentifierAliases>
+    <Alias n="1" Id="Namespace=Game.Core" />
+    <Alias n="2" Id="(@1)" />
+    <Alias n="3" Id="Namespace=Game.Core.Impl" />
+    <Alias n="4" Id="(@3)" />
+    <Alias n="5" Uri="Assembly=$(90d849f8-9a5d-4d0d-99bb-761d6c6af016.OutputPathUri)" />
+    <Alias n="6" Uri="Assembly=$(5bb70d25-53e7-4765-aa08-479dad3f9d76.OutputPathUri)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="5bb70d25-53e7-4765-aa08-479dad3f9d76.OutputPathUri" Value="file:///D:/proyects/EducationalProyects/Proyecto-Arquitectura/trunk/Game.Core/bin/Debug/Game.Core.dll" />
+    <Path Id="90d849f8-9a5d-4d0d-99bb-761d6c6af016.OutputPathUri" Value="file:///D:/proyects/EducationalProyects/Proyecto-Arquitectura/trunk/Game.Core.Impl/bin/Debug/Game.Core.Impl.dll" />
+  </Paths>
+</DirectedGraph>
