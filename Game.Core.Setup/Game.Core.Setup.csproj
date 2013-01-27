@@ -55,12 +55,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
     <CodeContractsRuntimeSkipQuantifiers>True</CodeContractsRuntimeSkipQuantifiers>
-    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
     <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
     <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
     <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
@@ -78,7 +78,7 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
@@ -110,16 +110,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-    <Target Name="CopyOutput">    
-        <CreateItem 
-            Include="$(OutDir)**\*.dll;$(OutDir)**\*.xml;$(OutDir)**\*.pdb;" 
-            Exclude="$(OutDir)_tmpIntermediateAT\*;$(OutDir)_tmpIntermediateAT\**\*;$(OutDir)*.mm.dll">
-        <Output TaskParameter="Include" ItemName="SrcCopyFiles" />
-        </CreateItem>
-        <Copy 
-            SourceFiles="@(SrcCopyFiles)" 
-            DestinationFiles="@(SrcCopyFiles->'..\Game.Web\bin\%(RecursiveDir)%(Filename)%(Extension)')" 
-            SkipUnchangedFiles="true" 
-            ContinueOnError="true" />         
-    </Target>
+  <Target Name="CopyOutput">
+    <CreateItem Include="$(OutDir)**\*.dll;$(OutDir)**\*.xml;$(OutDir)**\*.pdb;" Exclude="$(OutDir)_tmpIntermediateAT\*;$(OutDir)_tmpIntermediateAT\**\*;$(OutDir)*.mm.dll">
+      <Output TaskParameter="Include" ItemName="SrcCopyFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(SrcCopyFiles)" DestinationFiles="@(SrcCopyFiles->'..\Game.Web\bin\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" ContinueOnError="true" />
+  </Target>
 </Project>
