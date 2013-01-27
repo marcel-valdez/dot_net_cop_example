@@ -4,9 +4,8 @@ namespace Game.Core.Tests
 {
     using DependencyLocation;
     using DependencyLocation.Setup;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    public class Initializer
+  public class Initializer
     {        
         public static void LoadDependencies()
         {

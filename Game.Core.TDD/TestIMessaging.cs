@@ -3,12 +3,12 @@
   using System;
   using System.Collections.Generic;
   using System.Linq;
-  using DependencyLocation;
-  using Microsoft.VisualStudio.TestTools.UnitTesting;
+  using DependencyLocation;  
   using TestingTools.Core;
   using TestingTools.Extensions;
+  using NUnit.Framework;
 
-  [TestClass]
+  [TestFixture]
   public class TestIMessaging
   {
     static IMessaging GetTarget()
@@ -16,14 +16,14 @@
       return Dependency.Locator.GetSingleton<IMessaging>();
     }
 
-    [ClassInitialize]
-    public static void Init(TestContext tc)
+    [SetUp]
+    public void Init()
     {
       Initializer.ReleaseDependencies();
       Initializer.LoadDependencies();
     }
 
-    [TestMethod]
+    [Test]
     public void CanPublishAndSubscribeToChannel()
     {
       // Arrange
@@ -57,7 +57,7 @@
       target.Unsubscribe(channel, handler);
     }
 
-    [TestMethod]
+    [Test]
     public void CanPublishAndSubscribeConditionallyToChannel()
     {
       // Arrange
@@ -82,7 +82,7 @@
       // Assert
       System.Threading.Thread.Sleep(200);      
       CollectionAssert.Contains(messages.Keys, channel);
-      Assert.AreEqual(messages[channel].Count, 2);
+      Assert.AreEqual(2, messages[channel].Count);
       CollectionAssert.Contains(messages[channel], "message");
       CollectionAssert.Contains(messages[channel], "message1");
       CollectionAssert.DoesNotContain(messages[channel], "mesage");
@@ -93,7 +93,7 @@
 
     }
 
-    [TestMethod]
+    [Test]
     public void CanUnsubscribe()
     {
       // Arrange

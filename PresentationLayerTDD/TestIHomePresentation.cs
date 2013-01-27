@@ -5,12 +5,12 @@
     using DependencyLocation;
     using FizzWare.NBuilder;
     using Game.Logic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Moq;
     using TestingTools.Core;
     using TestingTools.Extensions;
 
-    [TestClass]
+    [TestFixture]
     public class TestIHomePresentation
     {
         private static int RoomCount = 3;
@@ -39,8 +39,8 @@
             return Dependency.Locator.Create<IHomePresentation>(session_id);
         }
 
-        [ClassInitialize]
-        public static void InitializeClass(TestContext context)
+        [SetUp]
+        public static void InitializeClass()
         {
             Initializer.ReleaseDependencies();
             Initializer.LoadDependencies();
@@ -144,18 +144,13 @@
             ((IDependencyConfigurator)Dependency.Locator).SetupSingleton(roomMgr.Object);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-        }
-
-        [TestCleanup]
+        [TearDown]
         public void CleanUp()
         {
             UserJoined = false;
         }
 
-        [TestMethod]
+        [Test]
         public void IsCorrectlyInitialized()
         {
             // Arrange
@@ -190,7 +185,7 @@
 
         }
 
-        [TestMethod]
+        [Test]
         public void CanListRoomsCorrectly()
         {
             // Arrange
@@ -211,7 +206,7 @@
 
         }
 
-        [TestMethod]
+        [Test]
         public void CanGetIntoARoom()
         {
             // Arrange

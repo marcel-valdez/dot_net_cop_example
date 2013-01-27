@@ -2,12 +2,12 @@
 {
     using DependencyLocation;
     using Game.Logic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Moq;
     using TestingTools.Core;
     using TestingTools.Extensions;
 
-    [TestClass]
+    [TestFixture]
     public class TestILoginPresentation
     {
         public ILoginPresentation CreateInstance()
@@ -15,8 +15,8 @@
             return Dependency.Locator.Create<ILoginPresentation>("sessionId");
         }
 
-        [ClassInitialize]
-        public static void Init(TestContext context)
+        [SetUp]
+        public static void Init()
         {
             Initializer.ReleaseDependencies();
             Initializer.LoadDependencies();
@@ -88,12 +88,8 @@
             ((IDependencyConfigurator)(Dependency.Locator)).SetupSingleton(accMgr.Object);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-        }
-
-        [TestCleanup]
+        
+        [TearDown]
         public void CleanupTest()
         {
             // Close Session
@@ -104,7 +100,7 @@
         /// Determines whether this instance [can handle valid login].
         /// Se asume que existe el usuario: marcel:password
         /// </summary>
-        [TestMethod]
+        [Test]
         public void CanAuthenticateValidLogin()
         {
             // Arrange
@@ -130,7 +126,7 @@
         /// Tests the invalid login.
         /// Se asume que el usuario dont-exist-ha no existe
         /// </summary>
-        [TestMethod]
+        [Test]
         public void CanRejectInvalidLogin()
         {
             // Arrange
@@ -152,7 +148,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void IsInitializedToUnauthenticated()
         {
             // Arrange
@@ -169,7 +165,7 @@
         #endregion
 
         #region Integration Tests
-        [TestMethod]
+        [Test]
         public void CanRecognizeAuthenticatedSession()
         {
             // Arrange

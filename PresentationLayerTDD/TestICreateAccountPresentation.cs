@@ -4,12 +4,12 @@
     using System;
     using DependencyLocation;
     using Game.Logic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Moq;
     using TestingTools.Core;
     using TestingTools.Extensions;
 
-    [TestClass]
+    [TestFixture]
     public class TestICreateAccountPresentation
     {
         static ISession Session
@@ -23,8 +23,8 @@
             return Dependency.Locator.Create<ICreateAccountPresentation>(Session.SessionId);
         }
 
-        [ClassInitialize]
-        public static void InitializeClass(TestContext context)
+        [SetUp]
+        public static void InitializeClass()
         {
             Initializer.ReleaseDependencies();
             Initializer.LoadDependencies();
@@ -62,14 +62,9 @@
                 ).Returns(operationResult.Object);
 
             ((IDependencyConfigurator)(Dependency.Locator)).SetupSingleton(accountManager.Object);
-        }
+        }        
 
-        [ClassCleanup]
-        public static void CleanupClass()
-        {
-        }
-
-        [TestMethod]
+        [Test]
         public void IsInitializedCorrectly()
         {
             // Arrange
@@ -99,7 +94,7 @@
             
         }
 
-        [TestMethod]
+        [Test]
         public void CanCreateNewAccount()
         {
             // Arrange
@@ -141,7 +136,7 @@
             
         }
 
-        [TestMethod]
+        [Test]
         public void CanInvalidateBadPasswordConfirmation()
         {
             // Arrange
@@ -154,7 +149,7 @@
         }
 
         [Ignore]
-        [TestMethod]
+        [Test]
         public void CanInvalidateBadUsername()
         {
             // Arrange
@@ -183,7 +178,7 @@
         }
 
         [Ignore]
-        [TestMethod]
+        [Test]
         public void CanInvalidateBadPassword()
         {
             // Arrange
@@ -199,7 +194,7 @@
         }
 
         [Ignore]
-        [TestMethod]
+        [Test]
         public void CanInvalidateTakenUsername()
         {
             // Arrange

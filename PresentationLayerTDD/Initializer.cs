@@ -3,12 +3,10 @@
     using System;
     using DependencyLocation;
     using DependencyLocation.Setup;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    //[TestClass]
+    using NUnit.Framework;
+    
     public class Initializer
-    {
-        //[AssemblyInitialize]
+    {        
         public static void LoadDependencies()
         {
             string dir = AppDomain.CurrentDomain.BaseDirectory;

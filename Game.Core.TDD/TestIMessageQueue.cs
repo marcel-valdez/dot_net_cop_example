@@ -2,15 +2,16 @@
 {
     using System.Linq;
     using DependencyLocation;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    
     using TestingTools.Core;
     using TestingTools.Extensions;
+  using NUnit.Framework;
 
-    [TestClass]
+    [TestFixture]
     public class TestIMessageQueue
     {
-        [ClassInitialize]
-        public static void Init(TestContext tc)
+        [SetUp]
+        public static void Init()
         {
             Initializer.ReleaseDependencies();
             Initializer.LoadDependencies();
@@ -21,7 +22,7 @@
             return Dependency.Locator.Create<IMessageQueue>();
         }
 
-        [TestMethod]
+        [Test]
         public void CanKnowItHasPending()
         {
             // Arrange
@@ -43,7 +44,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void CanStoreAllMessages()
         {
             // Arrange
@@ -64,7 +65,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void CanStoreCurrentChannels()
         {
             // Arrange
@@ -87,7 +88,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void CanGetmessagesOnAllChannels()
         {
             // Arrange
@@ -110,7 +111,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void CanPushMessage()
         {
             // Arrange

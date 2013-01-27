@@ -5,13 +5,13 @@
     using DependencyLocation;
     using FizzWare.NBuilder;
     using Game.Logic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Moq;
     using TestingTools.Core;
     using TestingTools.Extensions;
 
 
-    [TestClass]
+    [TestFixture]
     public class TestIRoomPresentation
     {
         static string[] usernames = { "marcel", "luis", "nathaly", "bebe" };
@@ -49,8 +49,8 @@
             set;
         }
 
-        [ClassInitialize]
-        public static void Init(TestContext tc)
+        [SetUp]
+        public static void Init()
         {
             Initializer.ReleaseDependencies();
             Initializer.LoadDependencies();
@@ -82,7 +82,7 @@
 
         }
 
-        [ClassCleanup]
+        [TearDown]
         public static void Cleanup()
         {
 
@@ -98,7 +98,7 @@
             return Dependency.Locator.Create<IRoomPresentation>(Session.SessionId);
         }
 
-        [TestMethod]
+        [Test]
         public void IsCorrectlyInitialized()
         {
             // Arrange
@@ -129,7 +129,7 @@
                 .Now();
         }
 
-        [TestMethod]
+        [Test]
         public void CanChallengeUser()
         {
             // Arrange
@@ -181,7 +181,7 @@
                 .Now();*/
         }
 
-        [TestMethod]
+        [Test]
         public void CanFindRandomBattle()
         {
             // Arrange
@@ -210,7 +210,7 @@
             Verify.That(challengeeRoom.ChallengeButtonEnabled).IsFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void CanUpdateUserStats()
         {
             // Arrange
