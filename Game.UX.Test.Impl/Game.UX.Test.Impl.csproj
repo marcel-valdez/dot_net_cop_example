@@ -53,9 +53,9 @@
     <Compile Include="UserDialogPresentation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game.Presentation.Test\Game.UX.Test.csproj">
-      <Project>{43D68F9F-07E8-4F46-934D-3872FE185CF0}</Project>
-      <Name>Game.UX.Test %28Game.UX.Test\Game.UX.Test%29</Name>
+    <ProjectReference Include="..\PresentationLayerInterfaces\Game.Presentation.csproj">
+      <Project>{253F3338-17E9-41B8-8495-34C5F6A7F409}</Project>
+      <Name>Game.Presentation %28Game.Presentation\Game.Presentation%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

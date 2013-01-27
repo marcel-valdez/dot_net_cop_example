@@ -49,7 +49,9 @@ namespace Game.Presentation
         {
             set
             {
-                Contract.Requires(value >= 0 && value < RoomNames.Count());
+                Contract.Requires(
+                  value >= 0 && value < RoomNames.Count(),
+                  "The value was outside of the range.");
             }
         }
 

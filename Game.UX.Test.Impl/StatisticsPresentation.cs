@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Game.UX.Test.Impl
+namespace Game.Presentation.TestImpl
 {
     public class StatisticsPresentation : IStatisticsPresentation
     {
@@ -80,5 +80,26 @@ namespace Game.UX.Test.Impl
             }
         }
 
+
+        #region IStatisticsPresentation Members
+
+
+        public string RankingLabelText
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public int Ranking
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        #endregion
     }
 }

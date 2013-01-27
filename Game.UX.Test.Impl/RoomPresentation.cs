@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Game.UX.Test.Impl
+namespace Game.Presentation.TestImpl
 {
     public class RoomPresentation : IRoomPresentation
     {
@@ -103,5 +103,49 @@ namespace Game.UX.Test.Impl
         {
         }
 
+
+        #region IRoomPresentation Members
+
+        IEnumerable<IRoomUserDTO> IRoomPresentation.Usuarios
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public bool ChallengeButtonEnabled
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public bool FindBattleButonEnabled
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public IUserDialogPresentation CurrentDialogPresentation
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public ILogoutButtonPresentation LogoutButton
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        #endregion
     }
 }

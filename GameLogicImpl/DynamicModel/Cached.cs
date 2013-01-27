@@ -99,12 +99,12 @@ namespace Game.Logic.DynamicModel
 
             if (obj is Cached<T> && this.IsAlive && ((Cached<T>)obj).IsAlive)
             {
-				// SMELL: NOT THREAD SAFE.
-				/** 
-				* Aunque podría estar vivo el objeto a la hora de preguntar: 
-				* this.IsAlive y obj.IsAlive, el GC podría llevarse ambos objetos 
-				* en cualquier momento dentro del código.
-				**/
+        // SMELL: NOT THREAD SAFE.
+        /** 
+        * Aunque podría estar vivo el objeto a la hora de preguntar: 
+        * this.IsAlive y obj.IsAlive, el GC podría llevarse ambos objetos 
+        * en cualquier momento dentro del código.
+        **/
                 return ((Cached<T>)obj).Equals(this.Touch());
             }
 

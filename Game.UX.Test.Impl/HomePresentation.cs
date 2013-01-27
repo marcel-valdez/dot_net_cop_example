@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Game.UX.Test.Impl
+namespace Game.Presentation.TestImpl
 {
     public class HomePresentation : IHomePresentation
     {
@@ -15,8 +15,12 @@ namespace Game.UX.Test.Impl
         private int _SelectedRoomIndex;
 
         public HomePresentation()
+          : this(10)
         {
-            string[] roomName = new string[10];
+        }
+        public HomePresentation(int numberOfRooms)
+        {
+            string[] roomName = new string[numberOfRooms];
             for (int i = 0; i < roomName.Length; i++)
             {
                 roomName[i] = "Sala " + Convert.ToString(i);
@@ -68,5 +72,50 @@ namespace Game.UX.Test.Impl
         {
         }
 
+
+        #region IHomePresentation Members
+
+
+        public ILogoutButtonPresentation LogoutButton
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public IStatisticsPresentation UserStats
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public string Message
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public bool MessageVisible
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        public bool HasJoinedRoom
+        {
+          get
+          {
+            throw new NotImplementedException();
+          }
+        }
+
+        #endregion
     }
 }

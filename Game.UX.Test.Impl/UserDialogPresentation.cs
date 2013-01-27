@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Game.UX.Test;
+using Game.Presentation;
 
-namespace Game.UX.Test.Impl
+namespace Game.Presentation.TestImpl
 {
     public class UserDialogPresentation : IUserDialogPresentation
     {

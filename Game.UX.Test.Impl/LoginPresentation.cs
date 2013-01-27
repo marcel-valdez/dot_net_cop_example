@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Game.UX.Test.Impl
+namespace Game.Presentation.TestImpl
 {
     public class LoginPresentation : ILoginPresentation
     {

@@ -45,27 +45,20 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="TestingTools">
-      <HintPath>..\lib\TestingTools.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game.Presentation.Test\Game.UX.Test.csproj">
-      <Project>{43D68F9F-07E8-4F46-934D-3872FE185CF0}</Project>
-      <Name>Game.UX.Test %28Game.UX.Test\Game.UX.Test%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Game.UX.Test.Impl\Game.UX.Test.Impl.csproj">
       <Project>{ACB58A9F-53C0-4F6D-A174-156C301A7DF8}</Project>
       <Name>Game.UX.Test.Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentationLayerInterfaces\Game.Presentation.csproj">
+      <Project>{253F3338-17E9-41B8-8495-34C5F6A7F409}</Project>
+      <Name>Game.Presentation %28Game.Presentation\Game.Presentation%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

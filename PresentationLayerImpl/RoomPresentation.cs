@@ -371,7 +371,7 @@
             }
 
             Dependency.Locator.GetSingleton<IRoomsManager>()
-                .LeaveRoom(this.roomUser);
+                      .LeaveRoom(this.roomUser);
         }
         #endregion
     }

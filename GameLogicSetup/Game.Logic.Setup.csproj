@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build;CopyOutput" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -115,4 +115,16 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+      <Target Name="CopyOutput">    
+        <CreateItem 
+            Include="$(OutDir)**\*.dll;$(OutDir)**\*.xml;$(OutDir)**\*.pdb;" 
+            Exclude="$(OutDir)_tmpIntermediateAT\*;$(OutDir)_tmpIntermediateAT\**\*;$(OutDir)*.mm.dll">
+        <Output TaskParameter="Include" ItemName="SrcCopyFiles" />
+        </CreateItem>
+        <Copy 
+            SourceFiles="@(SrcCopyFiles)" 
+            DestinationFiles="@(SrcCopyFiles->'..\Game.Web\bin\%(RecursiveDir)%(Filename)%(Extension)')" 
+            SkipUnchangedFiles="true" 
+            ContinueOnError="true" />         
+    </Target>
 </Project>

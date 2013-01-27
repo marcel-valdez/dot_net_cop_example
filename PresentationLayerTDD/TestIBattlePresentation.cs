@@ -106,7 +106,7 @@
             }
         }
 
-        public IBattlePresentation CreateInstance()
+        public static IBattlePresentation CreateInstance()
         {
             // El constructor debería recibir el usuario que está en la batalla,
             // y el director de la batalla en que se encuentra
@@ -193,7 +193,7 @@
             IBattlePresentation target;
 
             // Act
-            target = this.CreateInstance();
+            target = TestIBattlePresentation.CreateInstance();
 
             // Assert
             Verify.That(target.ConfirmBtnEnabled).IsTrue()
@@ -229,12 +229,12 @@
         public void CanPickCardsOrCardToUse()
         {
             // Arrange
-            IBattlePresentation target = this.CreateInstance();
+            IBattlePresentation target = TestIBattlePresentation.CreateInstance();
 
             // Act
             target.MyCards.ElementAt(0).Selected = true;
             target.ConfirmButtonPressed();
-            target = this.CreateInstance();
+            target = TestIBattlePresentation.CreateInstance();
 
             // Assert
             Verify.That(target.MyCards)
@@ -252,7 +252,7 @@
         public void CanFinishBattle()
         {
             // Arrange
-            IBattlePresentation target = this.CreateInstance();
+            IBattlePresentation target = TestIBattlePresentation.CreateInstance();
 
             // Act
             target.MyCards.ElementAt(0).Selected = true;
@@ -269,7 +269,7 @@
 
         /// <summary>
         /// TODO: Verifies that the board changes when the turn changes: 
-        // Show Options -> Choose -> Show Results -> Choose Rejected -> Show Options
+        /// Show Options -> Choose -> Show Results -> Choose Rejected -> Show Options
         /// </summary>
         [TestMethod]
         public void CanPlayAWholeTurn()
@@ -278,7 +278,7 @@
             Mock.Get(BattleDirector.Scenario)
                 .SetupGet(sce => sce.State)
                 .Returns(BattleState.WaitingForCardElection);
-            IBattlePresentation target = this.CreateInstance();
+            IBattlePresentation target = TestIBattlePresentation.CreateInstance();
 
             // Act
             target.MyCards.ElementAt(0).Selected = true;
@@ -322,7 +322,7 @@
             Mock.Get(OppSession)
                 .Setup(u => u.GetValue<IDictionary<IPlayer, int>>(It.IsAny<object>()))
                 .Returns(valuesGetter);
-            target = this.CreateInstance();
+            target = TestIBattlePresentation.CreateInstance();
 
             // Assert III
             Verify.That(target.HarmResultsVisible).IsTrue()
@@ -341,7 +341,7 @@
             // Act IV
             target.MyCards.ElementAt(1).Selected = true;
             target.ConfirmButtonPressed();
-            target = this.CreateInstance();
+            target = TestIBattlePresentation.CreateInstance();
 
             // Assert IV
             Verify.That(target.HarmResultsVisible).IsTrue()
@@ -357,7 +357,7 @@
             Mock.Get(BattleDirector.Scenario)
                 .SetupGet(sce => sce.State)
                 .Returns(BattleState.WaitingForCardElection);
-            target = this.CreateInstance();
+            target = TestIBattlePresentation.CreateInstance();
 
             // Assert V
             Verify.That(target.MyCards).IsTrueForAll(card => card.Selectable)
